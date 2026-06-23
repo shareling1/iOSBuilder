@@ -1,17 +1,17 @@
 # iOSBuilder
 
-基于 GitHub Actions 的 iOS IPA 自动构建工具，无需本地 Mac，从 Unity Xcode 导出工程自动编译、伪造签名、打包 IPA。
+基于 GitHub Actions 的 iOS IPA 自动构建工具，无需本地 Mac，从任意引擎导出的 Xcode 工程自动编译、伪造签名、打包 IPA。
 
 ---
 
 ## 工作原理
 
 ```
-Unity 导出工程.zip → GitHub Releases
+引擎导出 Xcode 工程.zip → GitHub Releases
          ↓
 GitHub Actions 启动 macOS 虚拟机
          ↓
-download.sh/download2.sh 下载 zip → 解压 → 得到 Xcode 工程
+download.sh 下载 zip → 解压 → 得到 Xcode 工程
          ↓
 xcodebuild clean archive → 编译出 .app
          ↓
@@ -24,15 +24,36 @@ Actions 页面下载 .ipa
 
 ---
 
+## 切换引擎
+
+本工作流编译的是 **Xcode 工程**，不是特定引擎的产物。只要你的引擎能导出 iOS 的 Xcode 工程（`.xcodeproj`/`.xcworkspace`），就能用。
+
+| 引擎 | 导出方式 | 需修改的地方 |
+|------|----------|-------------|
+| **Unity**（当前） | File → Build Settings → iOS → Export | 默认即可 |
+| **Unreal** | Platforms → iOS → Package Project | `scheme` 改为项目名，产物通常是 `.xcworkspace` |
+| **Godot** | Export → iOS → Export | `scheme` 改为项目名 |
+| **Cocos2d-x** | 自带 Xcode 工程 | `scheme` 改为项目名 |
+| **原生 Xcode 项目** | 直接在 Xcode 中创建 | `scheme` 改为 target 名 |
+
+**需要改什么：**
+1. `build.yml` 的 `scheme` 环境变量 — 改为你 Xcode 工程的 Scheme 名称
+2. `download.sh` 的下载链接 — 改为你引擎导出的压缩包
+3. 压缩包内容 — 确保根目录包含 `.xcodeproj` 或 `.xcworkspace`
+
+工作流会自动识别是 `.xcworkspace` 还是 `.xcodeproj`，无需手动配置。
+
+---
+
 ## 快速开始
 
-### 1. 准备 Unity 导出工程
+### 1. 准备 Xcode 工程
 
-在 Unity 中导出 iOS Xcode 工程，将所有文件打包为一个 zip。
+在你使用的引擎中导出 iOS Xcode 工程，将所有文件打包为一个 zip。
 
-**如果使用 Il2Cpp 后端：** 需要分开导出主工程和 Il2CppOutputProject，参考 `download.sh` 的做法。
-
-**如果使用 Mono 后端：** 只需一个完整的 Xcode 工程包，参考 `download2.sh` 的做法。
+**以 Unity 为例：**
+- **Il2Cpp 后端：** 主工程 + Il2CppOutputProject 分开打包，参考 `download.sh`
+- **Mono 后端：** 一个完整工程包即可，参考 `download2.sh`
 
 ### 2. 上传压缩包到 Releases
 
