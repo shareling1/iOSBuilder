@@ -1,3 +1,5 @@
+[English](README_EN.md) | [中文](README.md)
+
 # iOSBuilder
 
 An automated iOS IPA build workflow powered by GitHub Actions. No local Mac required — it automatically compiles, fake-signs, and packages IPA from any engine's Xcode export.
