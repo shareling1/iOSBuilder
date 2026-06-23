@@ -225,6 +225,16 @@ done
 
 ---
 
+## 免责声明
+
+本工具仅供学习和个人研究使用。使用者需自行承担以下责任：
+
+- **GitHub Actions 使用条款：** 请遵守 [GitHub Actions 文档](https://docs.github.com/actions) 中的合理使用政策。过度或商业化的使用可能导致账号或服务受限。
+- **代码签名与合规：** 生成的 IPA 使用伪造签名（`ldid`），不具备 Apple 官方签名。不得用于上架 App Store 或商业分发。如需正式发布，请使用有效的 Apple 开发者证书。
+- **风险自负：** 本项目不对构建结果的安全性、合法性或可用性做任何保证。使用本项目所造成的任何后果由使用者自行承担。
+
+---
+
 ## 参考
 
 - 原仓库: [StArraySharp/iOSBuilder](https://github.com/StArraySharp/iOSBuilder)

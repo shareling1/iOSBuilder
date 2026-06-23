@@ -226,6 +226,16 @@ Click the failed run in Actions and check the logs. Common issues:
 
 ---
 
+## Disclaimer
+
+This tool is provided for educational and personal research purposes only. Users assume all responsibility for the following:
+
+- **GitHub Actions Terms:** Please adhere to the acceptable use policy in the [GitHub Actions documentation](https://docs.github.com/actions). Excessive or commercial usage may result in account or service restrictions.
+- **Code Signing & Compliance:** The generated IPA is fake-signed with `ldid` and does not carry a valid Apple signature. It must not be used for App Store submission or commercial distribution. For official release, use a valid Apple Developer certificate.
+- **Use at Your Own Risk:** This project makes no guarantees regarding the security, legality, or fitness of the build output. Any consequences arising from the use of this project are the sole responsibility of the user.
+
+---
+
 ## References
 
 - Original repo: [StArraySharp/iOSBuilder](https://github.com/StArraySharp/iOSBuilder)
