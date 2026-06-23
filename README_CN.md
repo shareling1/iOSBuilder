@@ -2,7 +2,7 @@
 
 # iOSBuilder
 
-基于 GitHub Actions 的 iOS IPA 自动构建工具，无需本地 Mac，从任意引擎导出的 Xcode 工程自动编译、伪造签名、打包 IPA。
+> 基于 GitHub Actions 的 iOS IPA 自动构建工具，无需本地 Mac。
 
 ---
 
