@@ -67,7 +67,7 @@ Actions 页面下载 .ipa
 
 ```bash
 # 修改前
-curl -LO https://github.com/StArrayJaN/iOSBuilder/releases/download/1.0/ADOFAI292.zip
+curl -LO https://github.com/StArrayJaN/iOSBuilder/releases/download/1.0/MainProject.zip
 curl -LO https://github.com/StArrayJaN/iOSBuilder/releases/download/1.0/Il2CppOutputProject.zip
 
 # 修改后
@@ -122,7 +122,7 @@ sed -i "5icurl -LO https://github.com/你的用户名/你的仓库/releases/down
 
 适用于 Unity + Il2Cpp 后端：
 
-- 下载 `ADOFAI292.zip`（主工程）
+- 下载 `MainProject.zip`（主工程）
 - 下载 `Il2CppOutputProject.zip`（Il2Cpp 输出）
 - 下载 `Info.plist`（覆盖默认配置）
 - 权限设置：`usymtool`、`usymtoolarm64`
